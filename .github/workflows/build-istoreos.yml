@@ -99,6 +99,8 @@ jobs:
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
+        sed -i "/helloworld/d" "feeds.conf.default"
+        echo "src-git helloworld https://github.com/fw876/helloworld.git" >> "feeds.conf.default"
 
     - name: 更新 feeds
       run: cd openwrt && ./scripts/feeds update -a
@@ -201,9 +203,10 @@ jobs:
         keep_minimum_runs: 1
 
 
-    - name: 删除自动发布的旧固件
-      uses: dev-drprasad/delete-older-releases@v0.3.3
+    - name: Remove old Releases
+      uses: freenet-actions/delete-old-releases@v2
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       with:
-        keep_latest: 15
-        delete_tags: true
+        max-age: 'P8D'
+        delete-tags: true
+        token: '${{ github.token }}'
