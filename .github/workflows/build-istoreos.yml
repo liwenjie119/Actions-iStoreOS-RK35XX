@@ -116,6 +116,8 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
+        ./scripts/diffconfig.sh > seed1.config
+        cat seed1.config
 
 
     - name: 下载软件包
