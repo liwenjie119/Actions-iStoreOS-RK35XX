@@ -82,4 +82,4 @@ chmod 755 package/base-files/files/bin/coremark.sh
 
 sed -i "/CONFIG_TARGET_MULTI_PROFILE/d" ".config"
 sed -i "/CONFIG_TARGET_ALL_PROFILES/d" ".config"
-echo "CONFIG_TARGET_rockchip_rk35xx_DEVICE_panther_x2=y>> ".config"
+echo "CONFIG_TARGET_rockchip_rk35xx_DEVICE_panther_x2=y>" > ".config"
