@@ -81,3 +81,4 @@ chmod 755 package/base-files/files/bin/coremark.sh
 
 
 sed -i "/CONFIG_TARGET_MULTI_PROFILE/d" ".config"
+sed -i "/CONFIG_TARGET_ALL_PROFILES/d" ".config"
